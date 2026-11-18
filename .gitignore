@@ -1,0 +1,21 @@
+# Build
+**/target/
+**/node_modules/
+**/dist/
+**/.angular/
+
+# IDE / OS
+.idea/
+*.iml
+.vscode/
+.DS_Store
+
+# Env / local
+.env
+*.log
+
+# Java
+*.class
+.classpath
+.project
+.settings/
