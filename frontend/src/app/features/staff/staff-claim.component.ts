@@ -175,7 +175,7 @@ export class StaffClaimComponent implements OnInit {
   }
 
   private refreshTimeline(id: string): void {
-    this.notificationsApi.timeline(id).subscribe({
+    this.notificationsApi.pollTimeline(id).subscribe({
       next: (items) => this.timeline.set(items),
       error: () => this.timeline.set([])
     });

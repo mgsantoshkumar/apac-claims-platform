@@ -127,10 +127,7 @@ export class ClaimDetailComponent implements OnInit {
       },
       error: () => this.loading.set(false)
     });
-    this.notificationsApi.timeline(id).subscribe({
-      next: (items) => this.timeline.set(items),
-      error: () => this.timeline.set([])
-    });
+    this.refreshTimeline(id);
   }
 
   provideInfo(): void {
@@ -144,12 +141,19 @@ export class ClaimDetailComponent implements OnInit {
         this.claim.set(updated);
         this.message.set('Response sent. Status moved to UNDER_REVIEW.');
         this.saving.set(false);
-        this.notificationsApi.timeline(claim.id).subscribe((items) => this.timeline.set(items));
+        this.refreshTimeline(claim.id);
       },
       error: () => {
         this.error.set('Could not send response.');
         this.saving.set(false);
       }
+    });
+  }
+
+  private refreshTimeline(id: string): void {
+    this.notificationsApi.pollTimeline(id).subscribe({
+      next: (items) => this.timeline.set(items),
+      error: () => this.timeline.set([])
     });
   }
 }

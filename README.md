@@ -166,6 +166,7 @@ AI_JOURNAL.md             AI working journal
 ## Documentation
 
 - [Architecture](docs/ARCHITECTURE.md)
+- [Architecture Q&A](docs/ARCHITECTURE_QA.md)
 - [Domain model](docs/DOMAIN_MODEL.md)
 - [Extending modules](docs/EXTENDING.md)
 - [AI journal](AI_JOURNAL.md)
