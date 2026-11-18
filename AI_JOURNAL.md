@@ -34,3 +34,11 @@ Running log of prompts, accepted suggestions, challenges, and overrides.
 
 **Asked / done:**
 - Scaffold multi-module backend, claims + notification services, Angular SPA, Compose, docs, journal, meaningful commits.
+
+**Verification:**
+- Host-run jars against Compose Postgres/Redis/Kafka: full lifecycle SUBMITTED→ASSIGNED→INFO_REQUESTED→UNDER_REVIEW→SETTLED produced 5 Kafka timeline events.
+- Workload summary returned Redis-backed status/market counts.
+- `docker compose build` succeeded for claims-service, notification-service, and frontend images.
+- Angular dev server serves on port 14200.
+
+**Override:** Claim number sequence started at 1000 and collided with seed `CLM-SG-2026-1001` — bumped AtomicInteger start to 2000.
