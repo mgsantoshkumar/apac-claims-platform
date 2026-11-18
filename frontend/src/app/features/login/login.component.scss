@@ -1,0 +1,84 @@
+.login-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+.login-panel {
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 560px;
+}
+
+.brand {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1.75rem;
+  margin: 0 0 1rem;
+  color: #0b3a53;
+}
+
+h1 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 2.2rem;
+  line-height: 1.2;
+  margin: 0 0 0.75rem;
+  color: #102a43;
+}
+
+.lede {
+  color: #486581;
+  margin-bottom: 2rem;
+}
+
+mat-card {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.full {
+  width: 100%;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.error {
+  color: #9b1c1c;
+  margin-top: 0.75rem;
+}
+
+.demos {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+
+  p {
+    width: 100%;
+    margin: 0 0 0.25rem;
+    color: #627d98;
+    font-size: 0.9rem;
+  }
+}
+
+.login-visual {
+  background:
+    linear-gradient(160deg, rgba(11, 58, 83, 0.85), rgba(15, 90, 110, 0.55)),
+    url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80')
+      center/cover;
+}
+
+@media (max-width: 900px) {
+  .login-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .login-visual {
+    min-height: 220px;
+  }
+
+  .login-panel {
+    padding: 2rem 1.25rem;
+  }
+}

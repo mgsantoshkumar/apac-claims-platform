@@ -32,7 +32,7 @@ public class ClaimService {
     private final ClaimRepository claimRepository;
     private final ClaimEventPublisher eventPublisher;
     private final WorkloadCacheService workloadCacheService;
-    private final AtomicInteger sequence = new AtomicInteger(1000);
+    private final AtomicInteger sequence = new AtomicInteger(2000);
 
     public ClaimService(
             ClaimRepository claimRepository,
