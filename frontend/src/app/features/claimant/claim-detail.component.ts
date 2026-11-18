@@ -1,7 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -12,8 +12,10 @@ import { Claim, TimelineEntry } from '../../shared/models/claim.models';
 @Component({
   selector: 'app-claim-detail',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatButtonModule, MatFormFieldModule, MatInputModule],
+  imports: [CommonModule, FormsModule, RouterLink, MatButtonModule, MatFormFieldModule, MatInputModule],
   template: `
+    <a mat-button class="back" routerLink="/claimant">← Back to My claims</a>
+
     @if (loading()) {
       <p>Loading claim…</p>
     } @else if (!claim()) {
@@ -81,6 +83,7 @@ import { Claim, TimelineEntry } from '../../shared/models/claim.models';
     }
   `,
   styles: `
+    .back { margin: 0 0 0.75rem -0.5rem; color: #0b3a53; }
     .eyebrow { text-transform: uppercase; letter-spacing: 0.08em; color: #627d98; font-size: 0.8rem; margin: 0; }
     h1 { font-family: 'Source Serif 4', Georgia, serif; margin: 0.25rem 0; color: #102a43; }
     .grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
