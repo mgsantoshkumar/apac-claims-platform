@@ -67,7 +67,7 @@ services:
       SPRING_DATA_REDIS_PORT: 6379
       SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:19092
       JWT_SECRET: ${JWT_SECRET:-chubb-apac-claims-mvp-secret-key-change-in-cloud}
-      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:14200}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:14200,http://127.0.0.1:14200}
     ports:
       - "${CLAIMS_SERVICE_PORT:-18081}:8080"
     depends_on:
@@ -89,7 +89,7 @@ services:
       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-claims}
       SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:19092
       JWT_SECRET: ${JWT_SECRET:-chubb-apac-claims-mvp-secret-key-change-in-cloud}
-      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:14200}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:14200,http://127.0.0.1:14200}
     ports:
       - "${NOTIFICATION_SERVICE_PORT:-18082}:8080"
     depends_on:

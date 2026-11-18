@@ -32,7 +32,7 @@ jwt:
   expiration-minutes: ${JWT_EXPIRATION_MINUTES:480}
 
 cors:
-  origins: ${CORS_ORIGINS:http://localhost:14200}
+  origins: ${CORS_ORIGINS:http://localhost:14200,http://127.0.0.1:14200}
 
 springdoc:
   api-docs:
