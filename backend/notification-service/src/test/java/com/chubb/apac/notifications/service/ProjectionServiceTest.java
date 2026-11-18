@@ -88,4 +88,34 @@ class ProjectionServiceTest {
         verify(timelineEntryRepository, never()).save(any());
         verify(userNotificationRepository, never()).save(any());
     }
+
+    @Test
+    void assignedEventNotifiesClaimantAndAdjuster() {
+        ClaimDomainEvent event = ClaimDomainEvent.of(
+                ClaimEventType.ASSIGNED,
+                UUID.randomUUID(),
+                "CLM-SG-2026-1002",
+                ClaimStatus.ASSIGNED,
+                Market.SG,
+                Lob.MOTOR,
+                "u-claimant-1",
+                "u-adjuster-1",
+                "u-adjuster-1",
+                "Claim assigned to adjuster",
+                new BigDecimal("1000"),
+                null
+        );
+        when(timelineEntryRepository.existsByClaimIdAndEventTypeAndOccurredAt(any(), any(), any()))
+                .thenReturn(false);
+
+        projectionService.project(event);
+
+        ArgumentCaptor<com.chubb.apac.notifications.domain.UserNotification> captor =
+                ArgumentCaptor.forClass(com.chubb.apac.notifications.domain.UserNotification.class);
+        verify(userNotificationRepository, times(2)).save(captor.capture());
+        assertThat(captor.getAllValues())
+                .extracting(com.chubb.apac.notifications.domain.UserNotification::getUserId)
+                .containsExactlyInAnyOrder("u-claimant-1", "u-adjuster-1");
+        assertThat(captor.getAllValues().getFirst().getTitle()).contains("Claim assigned");
+    }
 }
